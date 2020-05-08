@@ -1,8 +1,9 @@
 #imgIndex {
 
-	  height: 100vh;
-	  background-size: cover;
-	  background-position: center;
+	 background: url("../img/library1.jpg");
+     background-position: center;
+     background-attachment: contain;
+     background-size: cover;
 }
 
 .dropdown-content{
@@ -22,4 +23,9 @@
 #id_logo{
 	border-radius: 30px 5px 30px 30px;
     background-color: #ffffff;
+}
+
+.navBarTrans{
+    background-color: #37474f;
+    opacity: 0.98
 }

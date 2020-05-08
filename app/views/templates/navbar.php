@@ -4,15 +4,18 @@
 
 	<!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-  <li> <a href="#!"><i class="large material-icons">account_circle</i>Iniciar Sesión</a></li>
+  <li> <a href="#!"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
   <!--li class="divider"></li-->
-  <li><a href="#!"><i class="large material-icons">assignment</i>Registrarse</a></li>
+  <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
 </ul>
 
-<div id="blue" class="block blue">
-  <nav class="pushpin-demo-nav   blue-grey darken-4" data-target="blue">
+<div class="navbar-fixed z-depth-2">
+  <nav class="grey darken-3">
       <div class="nav-wrapper">
         <div class="container">
+
+          <a href="#" data-target="menu_responsive" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
           <a href="index.php" class="brand-logo"><img id="id_logo" src="<?= $BASE_PATH;?>public/img/Logo.png" height="60px" width="140px"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.php">Inicio</a></li>
@@ -24,16 +27,25 @@
           </ul>
         </div>
       </div>
-  </nav>
-  <div id="imgIndex" class="row">
-    <div class="row">
-      <div class="col s12 m6 l6"><h4>Hola y bienvenidos</h4></div>
-      <div class="col s12 m6 l6"><h6>Esto es la entrada</h6></div>
-    </div>
-    <img src="https://pixabay.com/get/54e5dc454252a514f6d1867dda35367b1d37d8ec5458744a_1920.jpg">
-  </div>
-  
-
+  </nav>  
 </div>
+
+<ul id="menu_responsive" class="sidenav">
+      <li><div class="user-view">
+        <div class="background">
+          <img src="<?= $BASE_PATH;?>public/img/fondoResponsive.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="<?= $BASE_PATH;?>public/img/userImg.jpg"></a>
+        <a href="#name"><span class="white-text name">John Doe</span></a>
+        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      </div></li>
+      <li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
+      <li><a href="libros.php"><i class="material-icons">book</i>Libros</a></li>
+      <li><a href="faq.php"><i class="material-icons">question_answer</i>FAQ</a></li>
+      <li> <a href="#!"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+      <!--li class="divider"></li-->
+      <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
+  </ul>
+
 
 <!--img src="https://image.flaticon.com/icons/png/512/2702/2702069.png" height="50px" width="50px"-->

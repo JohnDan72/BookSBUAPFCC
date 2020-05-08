@@ -6,20 +6,16 @@
     <script type="text/javascript">
     	M.AutoInit();
 
-    	
-
-    	$('.pushpin-demo-nav').each(function() {
-		    var $this = $(this);
-		    var $target = $('#' + $(this).attr('data-target'));
-		    $this.pushpin({
-		      top: $target.offset().top,
-		      bottom: $target.offset().top + $target.outerHeight() - $this.height()
-		    });
-		});
-
-
     	$(document).ready(function(){
-    		$('.pushpin').pushpin();
-		    $(".dropdown-trigger").dropdown();
+    		$("#imgIndex").css({
+	            "height": $(window).height() + "px"
+	        });
+    		$('.sidenav').sidenav();
+		    $(".dropdown-trigger").dropdown({
+		    	inDuration: 500,
+				outDuration: 500,
+				hover: true,
+				coverTrigger: false
+		    });
 		});
     </script>
