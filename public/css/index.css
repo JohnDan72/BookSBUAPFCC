@@ -1,10 +1,29 @@
+
+.section_class{
+	padding-right: 30px !important;
+	padding-left: 30px !important;
+}
+p{
+	font-size: 16px;
+}
+
 #imgIndex {
 
 	 background: url("../img/library1.jpg");
      background-position: center;
      background-attachment: contain;
      background-size: cover;
+     max-height: 500px;
 }
+.parallax-container{
+    max-height: 400px;
+}
+
+#imgParallax2{
+    border-radius: 10px 10px 10px 10px;
+    opacity: 0.8;
+}
+
 
 .dropdown-content{
 	width: 180px !important;
@@ -28,4 +47,8 @@
 .navBarTrans{
     background-color: #37474f;
     opacity: 0.98
+}
+
+#section_container{
+	margin-top: 30px;
 }
