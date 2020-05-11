@@ -1,0 +1,39 @@
+CREATE DATABASE Books_Buap;
+
+use Books_Buap;
+
+CREATE TABLE Usuario(
+	Id int(11) PRIMARY KEY AUTO_INCREMENT,
+    Nombre 		varchar(80)		NOT NULL,
+    Ap_Paterno	varchar(80)		NOT NULL,
+    Ap_Materno	varchar(80)		NOT NULL,
+    Correo		varchar(150)	NOT NULL,
+    Telefono	varchar(10)		NOT NULL,
+    Passwd		varchar(300)	NOT NULL,
+    Tipo		bit
+);
+
+CREATE TABLE Libro(
+	Id			int(11) PRIMARY KEY AUTO_INCREMENT,
+    Titulo		varchar(200) not null,
+    Autor		varchar(200) not null,
+    Area		varchar(150) not null,
+    Descripcion	varchar(200),
+    Precio		int(6),
+    Imagen		varchar(200),
+    Edo_Libro	varchar(50),
+    Vendido		bit,
+    Id_Vendedor	int,
+    FOREIGN KEY (Id_Vendedor) REFERENCES Usuario(Id)
+);
+
+CREATE TABLE Historial(
+	Id_Libro int,
+    Id_Vendedor int,
+    Id_Cliente int,
+    Fecha_Hora datetime,
+    FOREIGN KEY (Id_Libro) REFERENCES libro(Id),
+    FOREIGN KEY (Id_Vendedor) REFERENCES usuario(Id),
+    FOREIGN KEY (Id_Cliente) REFERENCES usuario(Id),
+    PRIMARY KEY (Id_Libro,Id_Vendedor,Id_Cliente)
+);
