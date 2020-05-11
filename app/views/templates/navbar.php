@@ -4,7 +4,7 @@
 
 	<!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-  <li> <a href="#!"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+  <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
   <!--li class="divider"></li-->
   <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
 </ul>
@@ -42,7 +42,7 @@
       <li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
       <li><a href="libros.php"><i class="material-icons">book</i>Libros</a></li>
       <li><a href="faq.php"><i class="material-icons">question_answer</i>FAQ</a></li>
-      <li> <a href="#!"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+      <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
       <!--li class="divider"></li-->
       <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
   </ul>

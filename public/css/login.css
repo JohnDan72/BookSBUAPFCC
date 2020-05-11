@@ -1,0 +1,15 @@
+#fondoLogin {
+	 background: url("../img/fondoLogin2.jpg");
+     background-position: center;
+     background-attachment: contain;
+     background-size: cover;
+}
+
+
+#panelDer{
+	background: url("../img/fondoLogin1.jpg");
+	background-position: center;
+     background-attachment: contain;
+     background-size: cover;
+     min-height: 500px;
+}

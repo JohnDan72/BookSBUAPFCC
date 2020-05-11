@@ -55,7 +55,7 @@
 		</div>
 		<div class="col s12 m4 l4 center section_class">
 			<div class="row">
-				<i class="medium material-icons light-blue-text text-darken-4">home</i>
+				<i class="medium material-icons light-blue-text text-darken-4">insert_emoticon</i>
 			</div>
 			<div class="row">
 				<h5>Facilidad de uso</h5>
