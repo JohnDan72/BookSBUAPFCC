@@ -37,3 +37,9 @@ CREATE TABLE Historial(
     FOREIGN KEY (Id_Cliente) REFERENCES usuario(Id),
     PRIMARY KEY (Id_Libro,Id_Vendedor,Id_Cliente)
 );
+
+
+--EJEMPLO DE INSERT Usuario
+
+INSERT INTO usuario (Nombre,Ap_Paterno,Ap_Materno,Correo,Passwd,Telefono,Tipo)
+       VALUES('Juan','García','López','mr._dany@hotmail.com',AES_ENCRYPT('xdlol123','books_buap_12321'),'2221063405',0);

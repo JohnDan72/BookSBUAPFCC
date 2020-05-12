@@ -2,12 +2,36 @@
 </head>
 <body>
 
-	<!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
-  <!--li class="divider"></li-->
-  <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
-</ul>
+<?php
+  if (isset($_SESSION['userdata'])) 
+  {
+    
+?>
+    
+    <!--Dropdown de sesión iniciada-->
+    <ul id="dropdown2" class="dropdown-content">
+      <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+      <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+    </ul>
+<?php
+  }
+  else
+  { 
+?>
+
+    <!-- Dropdown Público general -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+      <!--li class="divider"></li-->
+      <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
+    </ul>
+
+<?php
+  }
+?>
+	
+
+
 
 <div class="navbar-fixed z-depth-2">
   <nav class="grey darken-3">
@@ -22,7 +46,25 @@
             <li><a href="libros.php">Libros</a></li>
             <li><a href="faq.php">FAQ</a></li>
             <!-- Dropdown Trigger -->
-        	  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+            <?php
+              if (isset($_SESSION['userdata'])) 
+              {  
+            ?>
+                
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">¡Hola <?= $_SESSION['userdata']['Nombre'];?>!<i class="material-icons right">arrow_drop_down</i></a></li>
+
+            <?php
+              }
+              else
+              { 
+            ?>
+
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+            
+            <?php
+              }
+            ?>
+        	  
 
           </ul>
         </div>
@@ -31,21 +73,62 @@
 </div>
 
 <ul id="menu_responsive" class="sidenav">
-      <li><div class="user-view">
-        <div class="background">
-          <img src="<?= $BASE_PATH;?>public/img/fondoResponsive.jpg">
+      <li>
+        <div class="user-view">
+            <div class="background">
+              <img class="responsive-img" src="../../public/img/fondoResponsive.jpg">
+            </div>
+            <?php
+              if (isset($_SESSION['userdata'])) 
+              {  
+            ?>
+                <a href="#user"><img class="circle" src="../../public/img/userImg.jpg"></a>
+                <a href="#name"><span class="white-text name">¡Hola <?= $_SESSION['userdata']['Nombre']?>!</span></a>
+                <a href="#email"><span class="white-text email"><?= $_SESSION['userdata']['Correo']?></span></a>
+                
+
+            <?php
+              }
+              else
+              { 
+            ?>  
+                <a href="#user"><img class="circle" src="https://freesvg.org/img/abstract-user-flat-3.png"></a>
+                <div style="margin-top: 30px;">
+                  <a href="login.php"><span class="white-text email">Iniciar Sesión</span></a>
+                </div>
+                
+                
+                
+            <?php
+              }
+            ?>
         </div>
-        <a href="#user"><img class="circle" src="<?= $BASE_PATH;?>public/img/userImg.jpg"></a>
-        <a href="#name"><span class="white-text name">John Doe</span></a>
-        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-      </div></li>
+      </li>
+
       <li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
       <li><a href="libros.php"><i class="material-icons">book</i>Libros</a></li>
       <li><a href="faq.php"><i class="material-icons">question_answer</i>FAQ</a></li>
-      <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
-      <!--li class="divider"></li-->
-      <li><a href="#!"><i class="material-icons">assignment</i>Registrarse</a></li>
-  </ul>
+
+      <?php
+        if (isset($_SESSION['userdata'])) 
+        {  
+      ?>
+          <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+          <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+      <?php
+        }
+        else
+        { 
+      ?>  
+          
+          <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+          <!--li class="divider"></li-->
+          <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
+      <?php
+        }
+      ?>
+      
+</ul>
 
 
 <!--img src="https://image.flaticon.com/icons/png/512/2702/2702069.png" height="50px" width="50px"-->

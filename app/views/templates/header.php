@@ -1,4 +1,6 @@
-<?php $BASE_PATH = "/AppsWeb/ProyectoFinal/";?>
+<?php $BASE_PATH = "/AppsWeb/ProyectoFinal/";
+	  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>

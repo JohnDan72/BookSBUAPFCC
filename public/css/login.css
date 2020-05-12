@@ -1,5 +1,6 @@
+
 #fondoLogin {
-	 background: url("../img/fondoLogin2.jpg");
+	 background: url("../img/fondoLogin1.jpg");
      background-position: center;
      background-attachment: contain;
      background-size: cover;
@@ -7,9 +8,23 @@
 
 
 #panelDer{
-	background: url("../img/fondoLogin1.jpg");
+	background: url("../img/library1.jpg");
 	background-position: center;
      background-attachment: contain;
      background-size: cover;
-     min-height: 500px;
+     /*min-height: 200px;*/
+}
+
+#logoDer{
+	border-radius: 30px 30px 30px 30px;
+}
+
+.card-panel{
+	opacity: 0.9;
+}
+
+#id_logo{
+	border-radius: 30px 5px 30px 30px;
+    background-color: #ffffff;
+    opacity: 0.9;
 }
