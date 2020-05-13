@@ -32,10 +32,12 @@
     <script type="text/javascript">
     	M.AutoInit();
 
+
     	$(document).ready(function(){
     		$("#imgIndex").css({
 	            "height": $(window).height() + "px"
 	        });
+		    $('.parallax').parallax();
     		$('.sidenav').sidenav();
 		    $(".dropdown-trigger").dropdown({
 		    	inDuration: 500,
@@ -43,6 +45,6 @@
 				hover: true,
 				coverTrigger: false
 		    });
-		    $('.parallax').parallax();
+		    
 		});
     </script>

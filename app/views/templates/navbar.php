@@ -5,28 +5,38 @@
 <?php
   if (isset($_SESSION['userdata'])) 
   {
-    
-?>
-    
-    <!--Dropdown de sesión iniciada-->
-    <ul id="dropdown2" class="dropdown-content">
-      <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
-      <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
-    </ul>
-<?php
+    if ($_SESSION['userdata']['Tipo']==0) //opciones de usuario Normal
+    {  
+      ?>
+        <!--Dropdown de sesión iniciada-->
+        <ul id="dropdown2" class="dropdown-content">
+          <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+          <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+        </ul>
+      <?php
+    }
+    else
+    {
+      ?>
+        <ul id="dropdown2" class="dropdown-content">
+          <li> <a href="subirLibro.php"><i class="material-icons">file_upload</i>Subir Libro Nuevo</a></li>
+          <li> <a href="gestionLibro.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
+          <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+          <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+        </ul>
+      <?php
+    }
   }
   else
   { 
-?>
-
-    <!-- Dropdown Público general -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
-      <!--li class="divider"></li-->
-      <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
-    </ul>
-
-<?php
+    ?>
+      <!-- Dropdown Público general -->
+      <ul id="dropdown1" class="dropdown-content">
+        <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+        <!--li class="divider"></li-->
+        <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
+      </ul>
+    <?php
   }
 ?>
 	
@@ -81,50 +91,61 @@
             <?php
               if (isset($_SESSION['userdata'])) 
               {  
-            ?>
-                <a href="#user"><img class="circle" src="../../public/img/userImg.jpg"></a>
-                <a href="#name"><span class="white-text name">¡Hola <?= $_SESSION['userdata']['Nombre']?>!</span></a>
-                <a href="#email"><span class="white-text email"><?= $_SESSION['userdata']['Correo']?></span></a>
-                
-
-            <?php
+                ?>
+                  <a href="#user"><img class="circle" src="../../public/img/userImg.jpg"></a>
+                  <a href="#name"><span class="white-text name">¡Hola <?= $_SESSION['userdata']['Nombre']?>!</span></a>
+                  <a href="#email"><span class="white-text email"><?= $_SESSION['userdata']['Correo']?></span></a>
+                <?php
               }
               else
               { 
-            ?>  
-                <a href="#user"><img class="circle" src="https://freesvg.org/img/abstract-user-flat-3.png"></a>
-                <div style="margin-top: 30px;">
-                  <a href="login.php"><span class="white-text email">Iniciar Sesión</span></a>
-                </div>
-                
-                
-                
-            <?php
+                ?>  
+                  <a href="#user"><img class="circle" src="https://freesvg.org/img/abstract-user-flat-3.png"></a>
+                  <div style="margin-top: 30px;">
+                    <a href="login.php"><span class="white-text email">Iniciar Sesión</span></a>
+                  </div>
+                <?php
               }
             ?>
         </div>
       </li>
 
+
+      <li><a class="subheader">Inicio</a></li>
       <li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
       <li><a href="libros.php"><i class="material-icons">book</i>Libros</a></li>
       <li><a href="faq.php"><i class="material-icons">question_answer</i>FAQ</a></li>
 
+      <div class="row"><div class="col s10 offset-s1 divider"></div></div>
+      <li><a class="subheader">Cuenta</a></li>
+
       <?php
         if (isset($_SESSION['userdata'])) 
-        {  
-      ?>
-          <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
-          <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
-      <?php
+        { 
+          if($_SESSION['userdata']['Tipo'] == 0)
+          { 
+            ?>
+              <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+              <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+            <?php
+          }
+          else
+          {
+            ?>
+              <li> <a href="subirLibro.php"><i class="material-icons">file_upload</i>Subir Libro Nuevo</a></li>
+              <li><a href="gestionLibro.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
+              <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
+              <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
+            <?php
+          }
         }
         else
         { 
-      ?>  
-          
-          <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
-          <!--li class="divider"></li-->
-          <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
-      <?php
+          ?>  
+            <li> <a href="login.php"><i class="material-icons">account_circle</i>Iniciar Sesión</a></li>
+            <!--li class="divider"></li-->
+            <li><a href="registro.php"><i class="material-icons">assignment</i>Registrarse</a></li>
+          <?php
         }
       ?>
       

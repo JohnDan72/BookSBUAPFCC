@@ -1,4 +1,6 @@
 <?php include "templates/header.php";?>
+<!--Aqui va todo el css adicional de cada vista-->
+<link rel="stylesheet" href="<?= $BASE_PATH;?>public/css/index.css">
 <!--Aquí escribe el título de la página actual-->
 <title>Inicio</title>
 <script src="<?= $BASE_PATH;?>public/js/indexJS.js"></script>
