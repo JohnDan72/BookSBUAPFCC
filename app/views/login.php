@@ -51,7 +51,7 @@
 							        	<!--Aquí va el mensaje de error del login-->
 							        	
 							        </div>
-							        <a class="col s12 center" href="forgotPassword.php"><span>¿Olvidaste tu contraseña?</span></a>
+							        <a class="col s12 center" href="#.php"><span>¿Olvidaste tu contraseña?</span></a>
 							        <div class="clearfix"></div>
 							        <div class="col s12 center">
 							        	¿No tienes una cuenta? 

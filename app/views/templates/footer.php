@@ -45,6 +45,8 @@
 				hover: true,
 				coverTrigger: false
 		    });
+		    $('select').formSelect();
+	    	$('textarea#id_descrip').characterCounter();
 		    
 		});
     </script>

@@ -16,8 +16,37 @@
 
 	if (isset($_POST['enviarRegistro'])) 
 	{
-		//echo var_dump($_POST);
-		//procesar el captcha
+		//Validación del formulario
+		if (isset($_POST['tipoCuenta'])) {
+			$hayError = true;
+			$nombre = str_replace(' ', '', $_POST['nombre']);
+			$ap_p 	= str_replace(' ', '', $_POST['ap_pat']);
+			$ap_m 	= str_replace(' ', '', $_POST['ap_mat']);
+			$tel 	= str_replace(' ', '', $_POST['telefono']);
+			$email 	= str_replace(' ', '', $_POST['correo']);
+			$pass1 	= str_replace(' ', '', $_POST['pass1']);
+			$pass2 	= str_replace(' ', '', $_POST['pass2']);
+			$tipoC 	= $_POST['tipoCuenta'];
+
+			//validaciones
+			if ($nombre!="" && $ap_p!="" && $ap_m!="" && $tel!="" && is_numeric($tel) && $email!="" && $pass1!="" && $pass1==$pass2) {
+				require("../models/usuarioModel.php");	//carga del model
+				$model = new UserModel();				
+				if (($model->insertUser($nombre,$ap_p,$ap_m,$tel,$email,$pass1,$tipoC))) {	//realizar el insert y checar si no hay error
+					$hayError = false;
+				}
+			}
+			
+			if ($hayError) 
+			{ 	//ocurrió un problema
+				include "Errors/errorRegistro.php";
+			}
+			else
+			{	//Registro completado exitósamente
+				include "Exito/exitoRegistro.php";
+			}
+		}
+		
 		include "templates/footer.php";
 	}
 	else
