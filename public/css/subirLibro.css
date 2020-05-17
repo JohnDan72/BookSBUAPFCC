@@ -98,6 +98,10 @@
  border-bottom: 3px solid #00b0ff !important;
 }
 
+.input-field .prefix.active{
+    color: #00b0ff ;
+}
+
 .section_class{
 	padding-right: 30px !important;
 	padding-left: 30px !important;

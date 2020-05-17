@@ -39,11 +39,11 @@
 		      				<form class="col s12">
 		      					<div class="row">
 							        <div class="input-field col s12">
-							          <input placeholder="Ingresa tu correo" id="id_correo" name="correo" type="text" class="validate" required>
+							          <input placeholder="Ingresa tu correo" id="id_correo" name="correo" type="email" class="validate" required onkeypress="return inputKey(event);">
 							          <label for="id_correo">Correo</label>
 							        </div>
 							        <div class="input-field col s12">
-							          <input placeholder="Ingresa la Contraseña" id="id_pass" name="passwd" type="password" class="validate" required>
+							          <input placeholder="Ingresa la Contraseña" id="id_pass" name="passwd" type="password" class="validate" required onkeypress="return inputKey(event);">
 							          <label for="id_pass">Contraseña</label>
 							        </div>
 							        <div class="clearfix"></div>
@@ -127,6 +127,7 @@
 	            var auxError = document.getElementById('id_mensaje_error');
 	            auxError.textContent = cadResponse;
 	            auxError.style.display = 'block';
+	            document.getElementById('id_pass').value = "";
 	            $("#panelDer").css({
 		            "height": $(".card-panel").height() + "px"
 		        });
@@ -136,6 +137,16 @@
 	       console.log(err);
 	    });
 	}
+
+	function inputKey(e){
+	  		tecla = (document.all) ? e.keyCode : e.which;
+	        //checa fetch si se teclea enter
+	        if (tecla == 13) {
+	            return fetchLogin();
+	        }
+	}
+
+	
 
 </script>
 </body>

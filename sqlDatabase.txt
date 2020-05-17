@@ -43,3 +43,8 @@ CREATE TABLE Historial(
 
 INSERT INTO usuario (Nombre,Ap_Paterno,Ap_Materno,Correo,Passwd,Telefono,Tipo)
        VALUES('Juan','García','López','mr._dany@hotmail.com',AES_ENCRYPT('xdlol123','books_buap_12321'),'2221063405',0);
+
+
+--EJEMPLO DE INSERT Libro
+INSERT INTO libro (Titulo,Area,Descripcion,Precio,Edo_Libro,Imagen,Id_Vendedor)
+                    VALUES('El principito','Otros','',150,'Impecable','img.jpg','3');
