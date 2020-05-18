@@ -47,6 +47,7 @@
 		    });
 		    $('select').formSelect();
 	    	$('textarea#id_descrip').characterCounter();
+	    	$('.modal').modal();
 		    
 		});
     </script>
