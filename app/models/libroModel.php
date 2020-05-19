@@ -31,19 +31,22 @@
 			7 - Precio
 			8 - Vendidos
 		*/
-		public function getTotalPages($no_of_records_per_page,$filtro){
+		public function getTotalPages($no_of_records_per_page,$filtro,$id_user = 0){
 			include "../config/database.php";		//Conexión a la base de datos
 			$whereSentence = "";
 			//se cuentan los registros dependiendo del filtro
 			switch ($filtro) {
-				case '2':$whereSentence = "WHERE Area = 'Computación'";break;
-				case '3':$whereSentence = "WHERE Area = 'Física'";break;
-				case '4':$whereSentence = "WHERE Area = 'Hardware'";break;
-				case '5':$whereSentence = "WHERE Area = 'Matemáticas'";break;
-				case '6':$whereSentence = "WHERE Area = 'Otros'";break;
+				case '1':$whereSentence = "WHERE Vendido = 0";break;
+				case '2':$whereSentence = "WHERE Area = 'Computación' AND Vendido = 0";break;
+				case '3':$whereSentence = "WHERE Area = 'Física' AND Vendido = 0";break;
+				case '4':$whereSentence = "WHERE Area = 'Hardware' AND Vendido = 0";break;
+				case '5':$whereSentence = "WHERE Area = 'Matemáticas' AND Vendido = 0";break;
+				case '6':$whereSentence = "WHERE Area = 'Otros' AND Vendido = 0";break;
+				case '7':$whereSentence = "WHERE Vendido = 0";break;
 				case '8':$whereSentence = "WHERE Vendido = 1";break;
 				
 			}
+			$whereSentence.= " AND Id_Vendedor <> $id_user";
 			//echo "$whereSentence<br>";
 			$sql_total_pages = "SELECT COUNT(*) FROM libro $whereSentence";
 		    $result = mysqli_query($conexion,$sql_total_pages);
@@ -54,20 +57,20 @@
 			return $total_pages;
 		}
 
-		public function getDataCurrentPage($offset,$no_of_records_per_page,$filtro){
+		public function getDataCurrentPage($offset,$no_of_records_per_page,$filtro,$id_user = 0){
 			include "../config/database.php";		//Conexión a la base de datos
 
 			$whereSentence = "";
 			//se cuentan los registros dependiendo del filtro
 			switch ($filtro) {
-				case '1':$whereSentence = " ORDER BY Titulo ";break;
-				case '2':$whereSentence = " AND Area = 'Computación'  ORDER BY Titulo ";break;
-				case '3':$whereSentence = " AND Area = 'Física'  ORDER BY Titulo ";break;
-				case '4':$whereSentence = " AND Area = 'Hardware'  ORDER BY Titulo ";break;
-				case '5':$whereSentence = " AND Area = 'Matemáticas'  ORDER BY Titulo ";break;
-				case '6':$whereSentence = " AND Area = 'Otros'  ORDER BY Titulo ";break;
-				case '7':$whereSentence = " ORDER BY Precio ";break;
-				case '8':$whereSentence = " AND Vendido = 1  ORDER BY Titulo ";break;
+				case '1':$whereSentence = " AND Vendido = 0 AND Id_Vendedor <> $id_user ORDER BY Titulo ";break;
+				case '2':$whereSentence = " AND Vendido = 0 AND Area = 'Computación'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
+				case '3':$whereSentence = " AND Vendido = 0 AND Area = 'Física'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
+				case '4':$whereSentence = " AND Vendido = 0 AND Area = 'Hardware'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
+				case '5':$whereSentence = " AND Vendido = 0 AND Area = 'Matemáticas'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
+				case '6':$whereSentence = " AND Vendido = 0 AND Area = 'Otros'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
+				case '7':$whereSentence = " AND Vendido = 0 AND Id_Vendedor <> $id_user ORDER BY Precio ";break;
+				case '8':$whereSentence = " AND Vendido = 1 AND Id_Vendedor <> $id_user ORDER BY Titulo ";break;
 			}
 
 			$sql = "

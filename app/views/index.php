@@ -16,7 +16,7 @@
 			<h5 class="col s12">La página número uno en venta de libros para la FCC. Solo inicia sesión para obtener todos los beneficios!</h5>
 		</div>
 		<div class="row">
-			<button class="btn waves-effect waves-light pulse light-blue accent-3 col s8 m2 l2 offset-s2 offset-m5 offset-l5">Iniciar</button>
+			<a href="libros.php" class="btn waves-effect waves-light pulse light-blue accent-3 col s8 m2 l2 offset-s2 offset-m5 offset-l5">Iniciar</a>
 		</div>
 	</div>
 </div>
