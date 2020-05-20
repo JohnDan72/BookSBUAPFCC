@@ -17,22 +17,25 @@
 	if (isset($_POST['enviarRegistro'])) 
 	{
 		//Validación del formulario
-		if (isset($_POST['tipoCuenta'])) {
+		if (isset($_POST['tipoCuenta']) && isset($_POST['carrera'])) {
 			$hayError = true;
+			$carreras = ["Ing Ciencias de la Computación","Lic Ciencias de la Computación","Ing TIC's","Otros","Docencia"];
 			$nombre = str_replace(' ', '', $_POST['nombre']);
 			$ap_p 	= str_replace(' ', '', $_POST['ap_pat']);
 			$ap_m 	= str_replace(' ', '', $_POST['ap_mat']);
 			$tel 	= str_replace(' ', '', $_POST['telefono']);
+			$matri  = str_replace(' ', '', $_POST['matricula']);
 			$email 	= str_replace(' ', '', $_POST['correo']);
 			$pass1 	= str_replace(' ', '', $_POST['pass1']);
 			$pass2 	= str_replace(' ', '', $_POST['pass2']);
 			$tipoC 	= $_POST['tipoCuenta'];
+			$carrera = $_POST['carrera'];
 
 			//validaciones
-			if ($nombre!="" && $ap_p!="" && $ap_m!="" && $tel!="" && is_numeric($tel) && $email!="" && $pass1!="" && $pass1==$pass2) {
+			if ($nombre!="" && $ap_p!="" && $ap_m!="" && $tel!="" && is_numeric($tel) && $matri!="" && is_numeric($matri) && strlen($matri)==9 && is_numeric($carrera) && $carrera>=1 && $carrera<=5 && $email!="" && $pass1!="" && $pass1==$pass2) {
 				require("../models/usuarioModel.php");	//carga del model
 				$model = new UserModel();				
-				if (($model->insertUser($nombre,$ap_p,$ap_m,$tel,$email,$pass1,$tipoC))) {	//realizar el insert y checar si no hay error
+				if (($model->insertUser($nombre,$ap_p,$ap_m,$tel,$email,$pass1,$tipoC,$matri,$carreras[$carrera-1]))) {	//realizar el insert y checar si no hay error
 					$hayError = false;
 				}
 			}
@@ -110,10 +113,31 @@
 					      <div class="step-content">
 					         <div class="row">
 					         	<div class="input-field col s12">
+						          <input placeholder="Ingresa tu matrícula o Id de trabajador" name="matricula" id="id_matri" type="text" class="validate" maxlength="9" data-length="9" onkeypress="return soloNumeros(event);" required>
+						          <label for="id_matri">Matrícula o Id Trabajador</label>
+						          <div id='id_matri_error' style="display: none;">
+						          	<span style="color: red">Matrícula inválida o ya existente</span>
+						          </div>
+						        </div>
+						        <div class="input-field col s12">
+								    <select name="carrera">
+								      <option value="" disabled selected>Elige tu carrera</option>
+								      <option value="1">Ing. Ciencias de la Computación</option>
+								      <option value="2">Lic. Ciencias de la Computación</option>
+								      <option value="3">Ing TIC's</option>
+								      <option value="4">Otra Carrera</option>
+								      <option value="5">Docencia</option>
+								    </select>
+								    <label></label>
+								    <div class="row" id='id_carrera_error' style="display: none;">
+							          	<span style="color: red">Selecciona tu carrera</span>
+							        </div>
+								</div>
+					         	<div class="input-field col s12">
 						          <input placeholder="Ingresa tu correo" name="correo" id="id_correo" type="email" class="validate" required>
 						          <label for="id_correo">Correo</label>
 						          <div id='id_correo_error' style="display: none;">
-						          	<span style="color: red">Error, este correo ya ha sido reistrado</span>
+						          	<span style="color: red">Error, este correo ya ha sido registrado</span>
 						          </div>
 						        </div>
 						        <div class="input-field col s12">
@@ -255,7 +279,6 @@
 				}
 				if (currentSteps.active.index == 1) { //segunda parte, correo y contraseña
 					/*Se valida el form mediante fetch*/
-					//console.log("Se encuentra en Step 2");
 
 					/*
 						NOTA IMPORTANTE: esta función fetch solo funciona bien si todas las acciones que deseas realizar despues del mismo estan dentro de la promesa.
@@ -267,6 +290,8 @@
 			        
 				        if (myJson.correo) document.getElementById('id_correo_error').style.display = 'none';  
 				        else document.getElementById('id_correo_error').style.display = 'block';
+				        if (myJson.matricula) document.getElementById('id_matri_error').style.display = 'none';  
+				        else document.getElementById('id_matri_error').style.display = 'block';
 				        if (myJson.captcha) document.getElementById('id_captcha_error').style.display = 'none';  
 				        else document.getElementById('id_captcha_error').style.display = 'block';
 				        if (myJson.passwd1) document.getElementById('id_pass_error1').style.display = 'none'; 
@@ -275,8 +300,10 @@
 				        else document.getElementById('id_pass_error2').style.display = 'block';
 				        if (myJson.tipoCuenta) document.getElementById('id_tipo_error').style.display = 'none';
 				        else document.getElementById('id_tipo_error').style.display = 'block';
+				        if (myJson.carrera) document.getElementById('id_carrera_error').style.display = 'none';  
+				        else document.getElementById('id_carrera_error').style.display = 'block';
 
-				        band = myJson.correo && myJson.captcha && myJson.passwd1 && myJson.passwd2 && myJson.tipoCuenta; /*bandera de retorno sel step*/
+				        band = myJson.correo && myJson.matricula && myJson.captcha && myJson.passwd1 && myJson.passwd2 && myJson.tipoCuenta && myJson.carrera; /*bandera de retorno sel step*/
 						if (band) {
 							setTimeout(() => {
 					        	 destroyFeedback(true);

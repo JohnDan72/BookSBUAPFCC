@@ -46,7 +46,9 @@
 				case '8':$whereSentence = "WHERE Vendido = 1";break;
 				
 			}
-			$whereSentence.= " AND Id_Vendedor <> $id_user";
+			if ($filtro!=8)
+				$whereSentence.= " AND Id_Vendedor <> $id_user";
+			
 			//echo "$whereSentence<br>";
 			$sql_total_pages = "SELECT COUNT(*) FROM libro $whereSentence";
 		    $result = mysqli_query($conexion,$sql_total_pages);
@@ -70,7 +72,7 @@
 				case '5':$whereSentence = " AND Vendido = 0 AND Area = 'Matemáticas'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
 				case '6':$whereSentence = " AND Vendido = 0 AND Area = 'Otros'AND Id_Vendedor <> $id_user  ORDER BY Titulo ";break;
 				case '7':$whereSentence = " AND Vendido = 0 AND Id_Vendedor <> $id_user ORDER BY Precio ";break;
-				case '8':$whereSentence = " AND Vendido = 1 AND Id_Vendedor <> $id_user ORDER BY Titulo ";break;
+				case '8':$whereSentence = " AND Vendido = 1 ORDER BY Titulo ";break;
 			}
 
 			$sql = "

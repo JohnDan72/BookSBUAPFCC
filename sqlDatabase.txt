@@ -38,6 +38,7 @@ CREATE TABLE Historial(
     PRIMARY KEY (Id_Libro,Id_Vendedor,Id_Cliente)
 );
 
+ALTER TABLE libro add Fecha_Subido datetime DEFAULT '2020-05-17 14:35:20';
 
 --EJEMPLO DE INSERT Usuario
 
@@ -52,3 +53,24 @@ INSERT INTO libro (Titulo,Area,Descripcion,Precio,Edo_Libro,Imagen,Id_Vendedor)
 --EJEMPLO DE SELECT PARA PAGINACIÓN DE LIBROS
 SELECT * FROM libro LIMIT 0,3;
 SELECT libro.*,usuario.Nombre,usuario.Ap_Paterno,usuario.Correo,usuario.Telefono from libro,usuario WHERE usuario.Id = libro.Id_Vendedor LIMIT 0,3;
+
+--EJEMPLO INSERT EN FAQ
+INSERT INTO faq (Pregunta,Respuesta) VALUES('¿Que es BookS-BUAP?','Se trata de una plataforma donde puedes buscar libros de segunda mano que los mismos estudiantes, profesores o trabajadores ofrecen para toda la comunidad BUAP');
+
+
+--EJEMPLO SELECT INFO DE HISTORIAL CON SENTENCIA LEFT 
+SELECT  historial.Id_Libro,historial.Fecha_Hora,
+        libro.Titulo,libro.Area,libro.Precio,libro.Imagen,libro.Edo_Libro,
+        us1.Nombre AS Nom_Client,us1.Correo AS Cor_Client,
+        us2.Nombre AS Nom_Vend,us2.Correo AS Cor_Vend
+FROM historial
+LEFT JOIN usuario AS us1 ON us1.Id = historial.Id_Cliente
+LEFT JOIN usuario as us2 ON us2.Id = historial.Id_Vendedor
+LEFT JOIN libro ON libro.Id = historial.Id_Libro
+WHERE historial.Id_Cliente = 10
+ORDER BY Fecha_Hora DESC;
+        
+
+
+        
+
