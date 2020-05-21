@@ -72,7 +72,7 @@
 </div>
 
 <div class="parallax-container valign-wrapper">
-  <div class="parallax"><img src="<?= $BASE_PATH;?>public/img/library2.jpg"></div>
+  <div class="parallax"><img class="responsive-img" src="<?= $BASE_PATH;?>public/img/library2.jpg"></div>
   <div id="imgParallax2" class="row center grey-text text-lighten-4  grey darken-1">
   	<h5>Encuentra el libro que estabas buscando</h5>
   </div>

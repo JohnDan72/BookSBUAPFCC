@@ -28,7 +28,7 @@
 
 <div class="parallax-container valign-wrapper">
 	<div class="parallax">
-		<img src="http://www.hdfondos.eu/pictures/2012/1108/1/orig_518230.jpg">
+		<img class="responsive-img" src="http://www.hdfondos.eu/pictures/2012/1108/1/orig_518230.jpg">
 	</div>
 	<div id="imgParallax2" class="row center grey-text text-lighten-4  grey darken-1">
   	<h5>Mi Historial</h5>

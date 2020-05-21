@@ -5,7 +5,7 @@
 <title>Subir Libro</title>
 <?php include "templates/navbar.php";?>
 <?php
-	if (!(isset($_SESSION['userdata']))) {
+	if (!isset($_SESSION['userdata']) || $_SESSION['userdata']['Tipo']==0) {
 		header("Location: index.php");
 		exit();
 	}

@@ -71,6 +71,45 @@ WHERE historial.Id_Cliente = 10
 ORDER BY Fecha_Hora DESC;
         
 
+--EJEMPLO DE UPDATE LIBRO
+UPDATE libro 
+SET     Titulo      = '',
+        Area        = '',
+        Descripcion = '',
+        Edo_Libro   = '',
+        Imagen      = '',
+        Precio      =  2
+WHERE   Id = ;
+        
+
+--INSERTS DE FAQ
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Qué tipo de libros venden?','Libros de todas las carreras pero en especial los de Computación para la FCC');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Solo venden libros físicos o también digitales?','De momento solo se venden libros físicos de segunda mano o nuevos');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Solo venden o también rentan libros?','En esta plataforma solo se promocionan libros para venta');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Puedo ser comprador y vendedor?','Si tus planes son vender y comprar libros puedes crear tu cuenta que funcione con ambos roles');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo creo mi cuenta como usuario?','En BookS-BUAP puedes crear tu cuenta dando click en la opción \'Registrarse\' que aparece en la barra de navegación');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo creo mi cuenta como vendedor?','Al momento de realizar tu registro, selecciona la opcion de quiero vender y comprar libros');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Como restablezco mi contraseña?','En Iniciar sesión hay una opción donde puedes recuperarla (de momento aun no funciona jeje)');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo puedo buscar un libro?','En \'Libros\' puedes buscar cualquier tipo de libro y filtrar la búsqueda con alguna de las opciones disponibles');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo realizo una compra?','Primero debes de iniciar sesión con tu cuenta previamente creada, luego en la búsqueda de tu libro, da click en comprar, lee los pasos que se indican ahí mismo y por último da click en \'Realizar Pedido\'');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Como puedo pagar?','Al momento de realizar tu pedido, debes esperar a que el vendedor se comunique contigo o tú con él, y ponerse de acuerdo para quedarse de ver en algún lugar de la FCC para conlcuir con la compra');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Como genero una cita para compra de un libro?','Libros de todas las carreras pero en especial los de Computación para la FCC');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Como genero una cita para compra de un libro?','Solo debes de dar click en \'Realizar Pedido\' después de leer todas las indicaciones para y lo único qu queda es que tú y el vendedor se queden de ver en algún lugar de la FCC');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Qué sucede si no llego a la cita con el vendedor?','Debes comunicarte con él para quedar en otra ocación');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo puedo recuperar mi comprobante de pedido si lo pierdo?','No te preocupes, en la sección de \'Historial\' busca el pedido que deseas y podrás dar click en \'Abrir\' de la columno de comprobante');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Qué ocurre si maltraté o perdí un libro?','Como vendedor, debes de actualizar la información de tus libros subidos o darlo de baja mientras aún no se ha vendido');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Qué puedo hacer si el vendedor me da un libro sin las especificaciones que menciona?','Puedes informarnos de alguna anomalía en el proceso de compra llamando al número 2221063405');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Se puede devolver libros si no son lo que esperaba?','Una vez comprado, no habrá devoluciones a menos que haya un acuerdo entre el vendedor y el cliente');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo puedo revisar mi actividad de compra?','En \'Historial\' podrás revisar tus libros pedidos, y subidos o vendidos (en caso de vendedor)');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('¿Cómo puedo subir libros?','Como Vendedor, en la sección de \'Subir libro nuevo\' de la barra de navegación');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('Como vendedor ¿Cómo puedo dar de baja libros?','En Gestión de Libros puedes hacerlo');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('Como vendedor ¿Cómo actualizar o corregir información de un libro?','En Gestión de Libros al dar click en \'Actualizar\'');
+INSERT INTO faq(Pregunta,Respuesta)VALUES('Como vendedor ¿Cuáles son las características de imagen para subir un libro?','Solo se admiten imágenes con formato JPG/PNG que no pese más de 5MB');
+
+
+ 
+
+
 
         
 

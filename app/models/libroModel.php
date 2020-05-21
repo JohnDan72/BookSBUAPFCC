@@ -1,23 +1,90 @@
 <?php 
 	class LibroModel 
-	{
+	{	
+
+		public function getInfoLibro($id_libro,$id_owner){
+			include "../config/database.php";
+			$sql1 = "
+					SELECT * FROM libro WHERE Id = $id_libro AND Id_Vendedor = $id_owner AND Vendido = 0;
+					";
+			$data = mysqli_query($conexion,$sql1)->fetch_all(MYSQLI_ASSOC);
+
+			if ($data)
+				return $data[0];
+
+			return false;
+		}
+
+		public function getMyBooks($id_user){
+			include "../config/database.php";
+			$sql = "
+					SELECT * FROM libro WHERE Id_Vendedor = $id_user  AND Vendido = 0;
+					";
+			$data = mysqli_query($conexion,$sql)->fetch_all(MYSQLI_ASSOC);
+			return $data;
+		}
+
 		public function insertBook($post,$img_name,$id_vendedor){
 			include "../config/database.php";		//Conexión a la base de datos
+			$fecha = mysqli_query($conexion,"SELECT now() as Fecha")->fetch_all(MYSQLI_ASSOC)[0]['Fecha'];
 			$sql = "
-				INSERT INTO libro (Titulo,Area,Descripcion,Precio,Edo_Libro,Imagen,Id_Vendedor)
+				INSERT INTO libro (Titulo,Area,Descripcion,Precio,Edo_Libro,Imagen,Id_Vendedor,Fecha_Subido)
        			VALUES('".$post['titulo']."',
        				   '".$post['area']."',
        				   '".$post['descripcion']."',
        				    ".$post['precio'].",
        				   '".$post['edo_libro']."',
        				   '".$img_name."',
-       				    ".$id_vendedor."
+       				    ".$id_vendedor.",
+       				    '".$fecha."'
        				  );
 			";
 			
 			$result = mysqli_query($conexion,$sql);
 			mysqli_close($conexion);
 			return $result;
+		}
+
+		public function updateLibro1($post,$img_name){
+			include "../config/database.php";		//Conexión a la base de datos
+			$sql = "
+				UPDATE libro 
+				SET 	Titulo 		= '".$post['titulo']."',
+						Area		= '".$post['area']."',
+				        Descripcion	= '".$post['descripcion']."',
+				        Edo_Libro	= '".$post['edo_libro']."',
+				        Imagen		= '".$img_name."',
+				        Precio		=  ".$post['precio']."
+				WHERE   Id = ".$post['id_libro_anterior'].";
+			";
+			
+			$result = mysqli_query($conexion,$sql);
+			mysqli_close($conexion);
+			return $result;
+		}
+		public function updateLibro2($post,$postAnt){
+			//se checa cambios
+			if ($post['titulo']==$postAnt['Titulo'] && $post['area']==$postAnt['Area'] && $post['descripcion']==$postAnt['Descripcion'] && $post['edo_libro']==$postAnt['Edo_Libro'] && $post['precio']==$postAnt['Precio']) {
+				return 0;
+
+			}
+			//con cambios
+			include "../config/database.php";		//Conexión a la base de datos
+			$sql = "
+				UPDATE libro 
+				SET 	Titulo 		= '".$post['titulo']."',
+						Area		= '".$post['area']."',
+				        Descripcion	= '".$post['descripcion']."',
+				        Edo_Libro	= '".$post['edo_libro']."',
+				        Precio		=  ".$post['precio']."
+				WHERE   Id = ".$post['id_libro_anterior'].";
+			";
+			
+			$result = mysqli_query($conexion,$sql);
+			mysqli_close($conexion);
+			if ($result)
+				return 1;
+			return -1;
 		}
 
 

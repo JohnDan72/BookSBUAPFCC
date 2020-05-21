@@ -20,7 +20,7 @@
       ?>
         <ul id="dropdown2" class="dropdown-content myDropdown">
           <li> <a href="subirLibro.php"><i class="material-icons">file_upload</i>Subir Libro Nuevo</a></li>
-          <li> <a href="gestionLibro.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
+          <li> <a href="gestionLibros.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
           <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
           <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
         </ul>
@@ -133,7 +133,7 @@
           {
             ?>
               <li> <a href="subirLibro.php"><i class="material-icons">file_upload</i>Subir Libro Nuevo</a></li>
-              <li><a href="gestionLibro.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
+              <li><a href="gestionLibros.php"><i class="material-icons">local_library</i>Gestión de Libros</a></li>
               <li> <a href="historial.php"><i class="material-icons">history</i>Historial</a></li>
               <li><a href="salir.php"><i class="material-icons">exit_to_app</i>Cerrar Sesión</a></li>
             <?php
