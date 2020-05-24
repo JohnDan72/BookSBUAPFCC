@@ -87,6 +87,24 @@
 			return -1;
 		}
 
+		public function deleteLibroById($id_libro,$id_user){
+			include "../config/database.php";		//Conexión a la base de datos
+			$sql1 = "
+						SELECT Id,Titulo FROM libro WHERE Id = $id_libro AND Id_Vendedor = $id_user AND Vendido = 0;
+					";
+			$puede_borrarse = mysqli_query($conexion,$sql1)->fetch_all(MYSQLI_ASSOC);
+			if($puede_borrarse){
+				$sql2 = "DELETE FROM libro WHERE Id = $id_libro";
+				$result = mysqli_query($conexion,$sql2);
+				mysqli_close($conexion);
+				return $result;
+			}
+			else{
+				mysqli_close($conexion);
+				return false;
+			}
+		}
+
 
 		/*	FILTROS
 			1 - Nombre

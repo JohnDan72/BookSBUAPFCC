@@ -59,6 +59,13 @@
 						</div>
 					<?php
 					break;
+				case '2':
+					?>
+						<div class="row center blue-text text-darken-1">
+							<h5>¡Libro borrado de la cuenta!</h5>
+						</div>
+					<?php
+					break;
 			}
 		}
 	?>
@@ -80,6 +87,7 @@
 				    			<th>Subido el</th>
 				    			<th>Imagen</th>
 				    			<th>Opción</th>
+				    			<th>Dar baja</th>
 			    			</tr>
 			    			
 			    		</thead>
@@ -101,6 +109,12 @@
 					    				</td>
 					    				<td>
 					    					<a class="waves-effect waves-light btn-flat blue lighten-1 grey-text text-lighten-5" href="actualizarLibro.php?libro=<?= $libroSub['Id'];?>">Actualizar</a>
+					    				</td>
+					    				<td>
+					    					<button class="waves-effect waves-light btn-flat red lighten-1 grey-text text-lighten-5" onclick="return borrarLibro(<?= $libroSub['Id']?>);">Borrar</button>
+					    					<form id="form_<?= $libroSub['Id']?>" method="DELETE" action="borrarLibro.php" style="display: none;">
+					    						<input name="id_libro" type="hidden" value="<?= $libroSub['Id']?>">
+					    					</form>
 					    				</td>
 					    			</tr>
 			    					<?php
@@ -135,6 +149,12 @@
 <?php include "templates/footer.php";?>
 <!--Aquí va todo el javascript que quieras incluir-->
 <script type="text/javascript">
+	function borrarLibro(id){
+		var borrar = window.confirm("Estas a punto de eliminar este libro de tu cuenta. Confirma para continuar, de otro modo puedes cancelar.");
 
+		if(borrar){
+			document.getElementById('form_'+id).submit();
+		}
+	}
 </script>
 <?php include "templates/end.php";?>
