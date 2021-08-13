@@ -7,6 +7,8 @@ CREATE TABLE Usuario(
     Nombre 		varchar(80)		NOT NULL,
     Ap_Paterno	varchar(80)		NOT NULL,
     Ap_Materno	varchar(80)		NOT NULL,
+    Matricula int(11) UNIQUE,
+    Carrera varchar(100) DEFAULT NULL,
     Correo		varchar(150)	NOT NULL,
     Telefono	varchar(10)		NOT NULL,
     Passwd		varchar(300)	NOT NULL,
@@ -37,6 +39,14 @@ CREATE TABLE Historial(
     FOREIGN KEY (Id_Cliente) REFERENCES usuario(Id),
     PRIMARY KEY (Id_Libro,Id_Vendedor,Id_Cliente)
 );
+
+CREATE TABLE faq (
+  Id int(2) NOT NULL AUTO_INCREMENT,
+  Pregunta varchar(250) NOT NULL,
+  Respuesta varchar(250) NOT NULL,
+  PRIMARY KEY (Id)
+)
+
 
 ALTER TABLE libro add Fecha_Subido datetime DEFAULT '2020-05-17 14:35:20';
 

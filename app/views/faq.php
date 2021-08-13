@@ -34,7 +34,7 @@
 					<?php
 						foreach ($faqs as $faq) {
 							?>
-								<div class="col s12 m6">
+								<div class="col s12 m6 l4">
 									<ul class="collapsible">
 									    <li>
 									      <div class="collapsible-header"><i class="material-icons">question_answer</i><?= $faq['Pregunta']?></div>
